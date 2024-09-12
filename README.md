@@ -15,7 +15,10 @@ Recognize_faces文件夹放入筛选对比人脸
 注意分类效果跟对比人脸有较大联系，请保证对比人脸图片的质量
 
 # 运行
-python run.py -process_number 1
+python run.py
 
-process_number 启用线程数
+# 可添加参数
+process_number 启用线程数 默认为0.1
+
+confidence 置信度 默认为0.6
 
