@@ -32,3 +32,5 @@ def run_classification(input_work_path, Confidence):
             file_input = file_input.split('.')[0]
             file_input = file_input
             copyfile(f'Body_cache\\{file_input}.png', f'Categories\\target_{save_file_name}\\{file_input}.png')
+        else:
+            logging.info(f'The highest similarity does not meet expectations, and the image will not be classified. file:{save_file_name}')
