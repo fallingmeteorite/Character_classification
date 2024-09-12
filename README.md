@@ -18,7 +18,7 @@ Recognize_faces文件夹放入筛选对比人脸
 python run.py
 
 # 可添加参数
-process_number 启用线程数 默认为0.1
+process_number 启用线程数 默认为 1
 
-confidence 置信度 默认为0.6
+confidence 置信度 默认为 0.6
 
