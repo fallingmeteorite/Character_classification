@@ -9,7 +9,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-process_number', type=int, help='开启线程数', default=1)
-parser.add_argument('-confidence', type=float, help='置信度', default=0.6)
+parser.add_argument('-confidence', type=float, help='置信度', default=0.5)
 args = parser.parse_args()
 
 logging = get_logger(log_use.INFO)

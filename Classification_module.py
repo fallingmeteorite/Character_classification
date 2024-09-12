@@ -19,15 +19,18 @@ def run_classification(input_work_path, Confidence):
 
         base_files_list = os.listdir('Recognize_faces')
         save_file_name = ''
-        contrasting_values = 0
+        contrasting_values = 1000
         for h in range(len(base_files_list)):
-            base_file_input = base_files_list[h]
-            judgment = detect_similarity(f'Recognize_faces\\{base_file_input}', f'{input_work_path}\\{file_input}')
-            if float(judgment) < float(contrasting_values):
-                contrasting_values = judgment
-                save_file_name = base_file_input
+            try:
+                base_file_input = base_files_list[h]
+                judgment = detect_similarity(f'Recognize_faces\\{base_file_input}', f'{input_work_path}\\{file_input}')
+                if float(judgment) < float(contrasting_values):
+                    contrasting_values = judgment
+                    save_file_name = base_file_input
+            except Exception as error:
+                logging.critical(error)
 
-        if float(contrasting_values) >= float(Confidence):
+        if float(contrasting_values) <= float(Confidence * 100):
             save_file_name = save_file_name.split('.')[0]
             file_input = file_input.split('.')[0]
             file_input = file_input
