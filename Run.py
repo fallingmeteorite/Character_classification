@@ -9,6 +9,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-process_number', type=int, help='开启线程数', default=2)
+parser.add_argument('-process_number', type=float, help='置信度', default=0.6)
 args = parser.parse_args()
 
 logging = get_logger(log_use.INFO)
@@ -28,6 +29,6 @@ os.mkdir('Face_cache')
 os.mkdir('Body_cache')
 
 try:
-    Thread_calls(process_src='Body_cache', process_number=args.process_number)
+    Thread_calls(process_src='Body_cache', process_number=args.process_number, Confidence=args.confidence)
 except Exception as error:
     logging.critical(error)

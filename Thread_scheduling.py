@@ -14,7 +14,7 @@ from log import get_logger
 logging = get_logger(log_use.INFO)
 
 
-def Thread_calls(process_src, process_number):
+def Thread_calls(process_src, process_number, Confidence):
     Initialize()
     new_file_path = ("Cache\\")
     list_ = os.listdir(process_src)
@@ -39,16 +39,16 @@ def Thread_calls(process_src, process_number):
         cnt += 1
 
     for index in range(int(cnt)):
-        _processes = (Thread(target=start_processes, args=(str(index + 1))))
+        _processes = (Thread(target=start_processes, args=(str(index + 1), Confidence)))
         _processes.start()
 
 
-def start_processes(index):
+def start_processes(index, Confidence):
     time1 = time.time()
 
     input_work_path = (f'Cache\\{index}')
 
-    run_classification(input_work_path)
+    run_classification(input_work_path, Confidence)
 
     time2 = time.time()
     logging.info(f"process{index}：The time spent on this thread{time2 - time1}s")
