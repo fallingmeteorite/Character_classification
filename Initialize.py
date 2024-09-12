@@ -38,7 +38,7 @@ def Initialize():
     for i in tqdm(range(len(files_list))):
         file_input = files_list[i]
         img = cv2.imread(f'Categorize_pictures\\{file_input}')
-        result = detect_person(f'Categorize_pictures\\{file_input}', iou_threshold = 0.4, max_infer_size = 896)
+        result = detect_person(f'Categorize_pictures\\{file_input}', iou_threshold=0.4, max_infer_size=896)
         for h in range(len(result)):
             coordinate_list = (result[h])[0]
             save_img = img[int(coordinate_list[1]):int(coordinate_list[3]),
@@ -54,7 +54,7 @@ def Initialize():
     for i in tqdm(range(len(files_list))):
         file_input = files_list[i]
         img = cv2.imread(f'Body_cache\\{file_input}')
-        result = detect_faces(f'Body_cache\\{file_input}', iou_threshold = 0.4, max_infer_size = 896)
+        result = detect_faces(f'Body_cache\\{file_input}', iou_threshold=0.4, max_infer_size=896)
         for h in range(len(result)):
             coordinate_list = (result[h])[0]
             save_img = img[int(coordinate_list[1]):int(coordinate_list[3]),

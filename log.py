@@ -1,5 +1,7 @@
 import logging as log_use
 import colorlog
+
+
 def get_logger(level=log_use.DEBUG):
     # 创建logger对象
     logger = log_use.getLogger()
@@ -26,5 +28,6 @@ def get_logger(level=log_use.DEBUG):
     # 将控制台日志处理器添加到logger对象
     logger.addHandler(console_handler)
     return logger
+
 
 logging = get_logger()
