@@ -14,8 +14,11 @@ from log import get_logger
 logging = get_logger(log_use.INFO)
 
 
-def Thread_calls(process_src, process_number, Confidence):
-    Initialize()
+def Thread_calls(process_src, process_number, confidence, body_cut):
+    # 图片预处理开始
+    Initialize(body_cut)
+
+    # 将图片放置缓存文件夹用于线程分类处理
     new_file_path = ("Cache\\")
     list_ = os.listdir(process_src)
     num = int(float(len(list_)) / float(process_number))
@@ -42,16 +45,17 @@ def Thread_calls(process_src, process_number, Confidence):
             logging.critical(error)
 
     for index in range(int(cnt)):
-        _processes = (Thread(target=start_processes, args=(str(index + 1), Confidence)))
+        _processes = (Thread(target=start_processes, args=(str(index + 1), confidence)))
         _processes.start()
 
 
-def start_processes(index, Confidence):
+# 开启线程处理文件
+def start_processes(index, confidence):
     time1 = time.time()
 
     input_work_path = (f'Cache\\{index}')
 
-    run_classification(input_work_path, Confidence)
+    run_classification(input_work_path, confidence)
 
     time2 = time.time()
     logging.info(f"process{index}：The time spent on this thread{time2 - time1}s")
