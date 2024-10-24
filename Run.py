@@ -10,6 +10,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('-process_number', type=int, help='开启线程数', default=1)
 parser.add_argument('-confidence', type=float, help='置信度', default=0.5)
+parser.add_argument('-body_cut', type=bool, help='开启多人裁剪', default=False)
 args = parser.parse_args()
 
 logging = get_logger(log_use.INFO)
@@ -29,6 +30,7 @@ os.mkdir('Face_cache')
 os.mkdir('Body_cache')
 
 try:
-    Thread_calls(process_src='Body_cache', process_number=args.process_number, Confidence=args.confidence)
+    Thread_calls(process_src='Body_cache', process_number=args.process_number, confidence=args.confidence,
+                 body_cut=args.body_cut)
 except Exception as error:
     logging.critical(error)
