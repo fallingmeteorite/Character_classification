@@ -2,6 +2,14 @@
 
  一个根据人脸分类人物图片的软件
 
+# 效果
+
+![248af981d96c024fb40485ac1c546f87](https://github.com/user-attachments/assets/2f225b5f-533d-48f3-9df4-8c505bc09d8d)
+
+
+![988d13e97a22eab86ec359697ea981f4](https://github.com/user-attachments/assets/6921bc0d-ef4f-4489-9d31-1fc345851286)
+
+
 # 安装
 
 测试环境python3.12.4
