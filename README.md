@@ -39,5 +39,5 @@ process_number 启用线程数 默认为 1 根据电脑性能添加
 
 confidence 置信度 默认为 0.5 越小越准确
 
-body_cut 是否开启人物裁剪 默认为 True 不填写默认为False
+body_cut 是否开启人物裁剪 不填写为False填写为True
 
