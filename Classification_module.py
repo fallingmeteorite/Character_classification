@@ -12,7 +12,8 @@ from Face_recognition import detect_similarity
 logging = get_logger(log_use.INFO)
 
 
-def run_classification(input_work_path, confidence):
+def run_classification(input_work_path, confidence, body_cut):
+
     files_list = os.listdir(input_work_path)
     for i in tqdm(range(len(files_list))):
         file_input = files_list[i]
@@ -35,7 +36,10 @@ def run_classification(input_work_path, confidence):
             save_file_name = save_file_name.split('.')[0]
             file_input = file_input.split('.')[0]
             file_input = file_input
-            copyfile(f'Body_cache\\{file_input}.png', f'Categories\\target_{save_file_name}\\{file_input}.png')
+            if body_cut:
+                copyfile(f'Body_cache\\{file_input}.png', f'Categories\\target_{save_file_name}\\{file_input}.png')
+            if not body_cut:
+                copyfile(f'Categorize_pictures\\{file_input}.png', f'Categories\\target_{save_file_name}\\{file_input}.png')
         else:
             logging.info(
                 f'The highest similarity does not meet expectations, and the image will not be classified. file:{save_file_name}')
